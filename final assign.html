@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="validate.css">
+    
+</head>
+<body bgcolor="lightblue">
+    <div id="header" align="center">COURSE REGISTRATION FORM</div>
+    <div class="form-style">
+        <h2>All Fields Are Mandatory</h2>
+        <form name="form1" method="post" action="message.html" onsubmit="return fncValidate();" autocomplete="off">
+        <table align="center" width="460" border="0">
+            <tr>
+                <td width="125"> &nbsp; First Name:</td>
+                <td width="180"><div class="input-group">
+                    <input type="text" name="fname" size="20" placeholder="First Name"></div>
+                     
+                </td>
+            </tr>
+            <tr>
+                <td width="125"> &nbsp; Last Name:</td>
+                <td width="180"><div class="input-group">
+                    <input type="text" name="lname" size="20" placeholder="Last Name"></div>
+                </td>
+            </tr>
+            <tr>
+                <td width="125"> &nbsp; email address:</td>
+                <td width="180"><div class="input-group">
+                    <input type="text" name="email" size="20" placeholder="Email address"></div>
+                </td>
+            </tr>
+            <tr>
+                <td width="125"> &nbsp; Password:</td>
+                <td width="180"><div class="input-group">
+                    <input type="password" name="pass" size="20" placeholder="Password"></div>
+                </td>
+            </tr>
+            <tr>
+                <td width="125"> &nbsp; Confirm password:</td>
+                <td width="180"><div class="input-group">
+                    <input type="password" name="cpass" size="20" placeholder="Confirm password"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Date of Birth: </td><td><span id="dob"><input type="date" name="dob" value="dbirth" id="dob"></span></td></tr>
+               <br>
+                <tr>
+                <td>Gender: </td><td><span id="gen"><input type="radio" name="gender" value="male" id="male" &nbsp;>male
+                <input type="radio" name="gender" value="female" id="female">Female</span></td>
+            </tr>
+            <tr>
+                <td>Address:</td><td><textarea name="address" class="textarea-field" placeholder="Address"></textarea></td>
+               
+            </tr>
+            <tr><td>Country:</td><td><div class="input-group">
+                <select id="country">
+                    <option value="">Choose a country</option>
+                    <option value="aus">Australia</option>
+                    <option value="bz">Brazil</option>
+                    <option value="fr">France</option>
+                    <option value="gre">Greece</option>
+                    <option value="gr">Germany</option>
+                    <option value="Ind">India</option>
+                </select></div>
+            </td></tr>
+            <tr><td>State:</td><td><div class="input-group">
+                <select id="State">
+                    <option value="">Choose a state</option>
+                    <option value="ap">Andhra Pradesh</option>
+                    <option value="arp">Arunachal Pradesh</option>
+                    <option value="ga">Goa</option>
+                    <option value="kar">Karnataka</option>
+                    <option value="jk">Jharkhand</option>
+                    <option value="mp">Madhya Pradhesh</option>
+                </select></div>
+            </td></tr>
+            <tr><td>Course:</td><td><div class="input-group">
+                <select id="course">
+                    <option value="">Choose a course </option>
+                    <option value="ai">AI for Everyone</option>
+                    <option value="ja">Java For Android</option>
+                    <option value="wd">Web development</option>
+                    <option value="py">Python for Everyone</option>
+                    <option value="sql">SQL</option>
+                    <option value="csharp">C#</option>
+                    
+                </select>
+            </div></td></tr>
+            
+            <tr>
+                <td>Select Batch:</td><td><span id="batch"><input type="radio" name="select batch" value="morning" id="morning" &nbsp;>Morning 
+                <input type="radio" name="select batch" value="evening" id="evening">Evening</span></td></tr>
+            <tr>
+                <td>&nbsp;Mobile no:</td>
+                <td><div class="input-group"><input type="text" name="phone" placeholder="Phone number"></div></td>
+            </tr>
+            <tr><td><input type="checkbox" name="term">I agree All the terms and conditions</td></tr>
+            <tr><td></td><td><input type="submit" name="Register" value="submit" class="btn">&nbsp&nbsp
+            <input type="reset" name="reset" value="Reset" class="btn">
+            </td></tr>
+            
+        </table>
+        
+        
+        
+        </form>
+    </div>
+   
+    <script type="text/javascript">
+        function fncValidate(){
+            var fn=document.form1.fname.value;
+            var ln=document.form1.lname.value;
+          var pass1=document.form1.pass.value;
+          var pass2=document.form1.cpass.value;
+          var patt=/[^a-z]/i;
+          var fname=patt.test(fn);
+          var lname=patt.test(ln);
+          if(fn==""){
+              alert("Please input first name");
+              
+              return false;
+          }
+          if(fn==null || fname==true){
+              alert("Enter only Alphabet");
+              return false;
+          }
+          if(ln=""){
+              alert("Please input lastname");
+              return false;
+          }
+          if(ln==null || lname==true){
+              alert("Enter only alphabet");
+              return false;
+          }
+          var m=document.getElementById("male");
+          var f=document.getElementById("female");
+          if((m.checked==false) && (f.checked==false))
+          {
+              alert("Please choose gender");
+              document.getElementById("gen").style.border="2px solid red";
+              return false;
+
+          }
+          else{
+              document.getElementById("gen").style.border="";
+          }
+          var add=document.form1.address.value;
+          var patt2=/[^a-z]/i;
+          var address=patt2.test(add);
+          if(add=""){
+              alert("Please enter your address");
+              return false;
+
+          }
+          c=document.getElementById("country");
+          if(c.value==null || c.value==""){
+              alert("Please Select a country");
+              return false;
+          }
+          var p=document.form1.phone.value;
+          if(isNaN(p))
+          {
+              alert("Enter only numbers");
+              return false;
+          }
+          if(p==""){
+              alert("Enter 10 digits");
+              return false;
+          }
+          if((p.length<10) &&(p.length>10)){
+              alert("Enter only 10 digits");
+              return false;
+          }
+           var em=document.form1.email.value;
+           var atpos=em.indexOf("@");
+           var dotpos=em.indexOf(".");
+           if(atpos<1 || dotpos<atpos+2 || dotpos+2>=em.length){
+               alert("invalid email Id");
+               return false;
+           }
+           if((pass1=="")&&(pass1.length<8)){
+               alert("password should not be less than 8 characters");
+               return false;
+
+           }
+           if(pass2==""){
+               alert("Please input confirm password");
+               return false;
+           }
+           if(pass1!=pass2){
+               alert("Confirm password not match");
+               return false;
+           }
+           alert("Submitted successfully!!");
+           document.form1.submit();
+
+
+
+            
+            
+        }
+
+    </script>
+</body>
+</html>
